@@ -5,12 +5,13 @@
 #include "fps.h"
 
 #include "../res/tile.h"
+#include "../res/smile.h"
 
 #define FPS 60
 
 u8 main(int argc, char* argv[]) {
 	openDisplay();
-	loadTextureToIndex(12, 12, TILE_IMG, 0);
+	loadTextureToIndex(16, 16, SMILE_IMG, 0);
 	while (shouldClose() != 1) {
 		float dt = tick(FPS);
 		// printf("%s%f\n", "DT: ", dt);
