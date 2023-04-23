@@ -3,11 +3,14 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
 
+#include "fps.h"
+
 struct SdlContext {
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	u8 shouldClose;
 	SDL_Event event;
+	u64 now, prev;
 }; struct SdlContext context = { 0 };
 
 void openDisplay() {
@@ -49,5 +52,18 @@ void display() {
 void cleanGfx() {
 	SDL_DestroyRenderer(context.renderer);
 	SDL_DestroyWindow(context.window);
+}
+
+float tick(u16 fps) {
+	context.now = SDL_GetPerformanceCounter();
+	SDL_Delay(1000 / 60);
+	float dt = (context.now - context.prev) / (float)SDL_GetPerformanceFrequency();
+	context.prev = context.now;
+	return dt;
+}
+
+void drawRect(i32 x, i32 y, u16 w, u16 h, u8 r, u8 g, u8 b) {
+	SDL_SetRenderDrawColor(context.renderer, r, g, b, 255);
+	SDL_RenderFillRect(context.renderer, &(SDL_Rect) {x, y, w, h});
 }
 

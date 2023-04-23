@@ -1,8 +1,8 @@
-#include <stdlib.h>
-typedef u_int8_t u8;
-typedef u_int16_t u16;
-typedef u_int32_t u32;
-typedef u_int64_t u64;
+#include <inttypes.h>
+typedef uint_fast8_t u8;
+typedef uint_fast16_t u16;
+typedef uint_fast32_t u32;
+typedef uint_fast64_t u64;
 
 typedef int8_t i8;
 typedef int16_t i16;

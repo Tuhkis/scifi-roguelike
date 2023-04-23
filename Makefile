@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-O2 -pipe -static
+CFLAGS=-O3 -pipe -static
 OUT=scifi-game
 
 COMP=$(CC) $(CFLAGS) -c
@@ -9,7 +9,7 @@ all: main.o
 main.o: src/main.c
 	$(COMP) src/main.c
 
-sdl-backend.o: src/sdl-backend.c src/gfx.h
+sdl-backend.o: src/sdl-backend.c src/gfx.h src/fps.h
 	$(COMP) src/sdl-backend.c
 
 sdl: all sdl-backend.o
