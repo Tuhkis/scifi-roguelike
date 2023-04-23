@@ -1,3 +1,4 @@
 *.o
 scifi-game
 res/*.h
+res/*.ppm~
