@@ -10,17 +10,13 @@
 
 u8 main(int argc, char* argv[]) {
 	openDisplay();
+	loadTextureToIndex(12, 12, GRASS_TILE, 0);
 	while (shouldClose() != 1) {
 		pollEvents();
 		tick(FPS);
 		clearScreen(55, 55, 55);
-		for (u8 y = 0; y < 12; ++y) {
-			for (u8 x = 0; x < 12; ++x) {
-				int p = (y*12+x)*3;
-				drawRect(x * 10, y * 10, 10, 10,
-					GRASS_TILE[p], GRASS_TILE[p+1], GRASS_TILE[p+2]);
-			}
-		}
+		drawTexture(0, 0, 64, 64, 0);
+		
 		display();
 	}
 	cleanGfx();

@@ -11,6 +11,7 @@ struct SdlContext {
 	u8 shouldClose;
 	SDL_Event event;
 	u64 now, prev;
+	SDL_Texture* textures[TEXURES_LEN];
 }; struct SdlContext context = { 0 };
 
 void openDisplay() {
@@ -65,5 +66,24 @@ float tick(u16 fps) {
 void drawRect(i32 x, i32 y, u16 w, u16 h, u8 r, u8 g, u8 b) {
 	SDL_SetRenderDrawColor(context.renderer, r, g, b, 255);
 	SDL_RenderFillRect(context.renderer, &(SDL_Rect) {x, y, w, h});
+}
+
+void loadTextureToIndex(u8 w, u8 h, u8 data[], u8 index) {
+	SDL_Surface* surface = SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0);
+	for (u8 y = 0; y < h; ++y) {
+		for (u8 x = 0; x < w; ++x) {
+			int p = (y*h+x)*3;
+			u32 colour =
+				(255 << 24) | (data[p+2] << 16) | ( data[p+1] << 8 ) | (data[p]);
+			SDL_FillRect(surface,
+				&(SDL_Rect) {x, y, 1, 1},
+				colour);
+		}
+	}
+	context.textures[index] = SDL_CreateTextureFromSurface(context.renderer, surface);
+}
+
+void drawTexture(i32 x, i32 y, u8 w, u8 h, u8 index) {
+	SDL_RenderCopy(context.renderer, context.textures[index], NULL, &(SDL_Rect) {x, y, w, h});
 }
 
