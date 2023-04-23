@@ -72,9 +72,10 @@ void loadTextureToIndex(u8 w, u8 h, const u8 data[], u8 index) {
 	SDL_Surface* surface = SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0);
 	for (u8 y = 0; y < h; ++y) {
 		for (u8 x = 0; x < w; ++x) {
-			int p = (y*h+x)*3;
+			int p = (y*w+x)*3;
 			u32 colour =
-				(255 << 24) | (data[p+2] << 16) | ( data[p+1] << 8 ) | (data[p]);
+				(255 << 24) | (data[p] << 16) | ( data[p+1] << 8 ) | (data[p+2]);
+			// printf("COL: %x\n", colour);
 			SDL_FillRect(surface,
 				&(SDL_Rect) {x, y, 1, 1},
 				colour);
