@@ -11,7 +11,7 @@
 
 u8 main(int argc, char* argv[]) {
 	openDisplay();
-	loadTextureToIndex(16, 8, SMILE_IMG, 0);
+	loadTextureToIndex(16, 16, SMILE_IMG, 0);
 	loadTextureToIndex(12, 12, TILE_IMG,  1);
 	while (shouldClose() != 1) {
 		float dt = tick(FPS);
