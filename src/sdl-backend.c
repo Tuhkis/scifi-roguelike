@@ -50,7 +50,14 @@ void display() {
 	SDL_RenderPresent(context.renderer);
 }
 
+void freeTextures() {
+	for (u8 i = 0; i < TEXURES_LEN; ++i) {
+		SDL_DestroyTexture(context.textures[i]);
+	}
+}
+
 void cleanGfx() {
+	freeTextures();
 	SDL_DestroyRenderer(context.renderer);
 	SDL_DestroyWindow(context.window);
 }
@@ -69,7 +76,7 @@ void drawRect(i32 x, i32 y, u16 w, u16 h, u8 r, u8 g, u8 b) {
 }
 
 void loadTextureToIndex(u8 w, u8 h, const u8 data[], u8 index) {
-	SDL_Surface* surface = SDL_CreateRGBSurface(0, w, h, 32, 0, 0, 0, 0);
+	SDL_Surface* surface = SDL_CreateRGBSurface(SDL_ALPHA_TRANSPARENT, w, h, 32, 0, 0, 0, 0);
 	for (u8 y = 0; y < h; ++y) {
 		for (u8 x = 0; x < w; ++x) {
 			int p = (y*w+x)*3;
@@ -82,6 +89,7 @@ void loadTextureToIndex(u8 w, u8 h, const u8 data[], u8 index) {
 		}
 	}
 	context.textures[index] = SDL_CreateTextureFromSurface(context.renderer, surface);
+	SDL_FreeSurface(surface);
 }
 
 void drawTexture(i32 x, i32 y, u8 w, u8 h, u8 index) {
