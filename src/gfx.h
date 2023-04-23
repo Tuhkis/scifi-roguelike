@@ -16,7 +16,7 @@ void clearScreen(u8 r, u8 g, u8 b);
 void display();
 void cleanGfx();
 void drawRect(i32 x, i32 y, u16 w, u16 h, u8 r, u8 g, u8 b);
-void loadTextureToIndex(u8 w, u8 h, u8 data[], u8 index);
+void loadTextureToIndex(u8 w, u8 h, const u8 data[], u8 index);
 void drawTexture(i32 x, i32 y, u8 w, u8 h, u8 index);
 u8 shouldClose();
 

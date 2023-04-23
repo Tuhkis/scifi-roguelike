@@ -1,10 +1,14 @@
 CC=gcc
 CFLAGS=-O3 -pipe -static
 OUT=scifi-game
+PYTHON=python3
 
 COMP=$(CC) $(CFLAGS) -c
 
-all: main.o
+all: imgs main.o
+
+imgs: res/*.ppm
+	$(PYTHON) scripts/resources.py
 
 main.o: src/main.c
 	$(COMP) src/main.c
@@ -17,6 +21,7 @@ sdl: all sdl-backend.o
 	strip $(OUT)
 
 clean:
+	rm res/*.h
 	rm *.o
 	rm $(OUT)
 

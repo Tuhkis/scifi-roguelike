@@ -4,18 +4,23 @@
 #include "gfx.h"
 #include "fps.h"
 
-#include "../res/grass-tile.h"
+#include "../res/tile.h"
 
 #define FPS 60
 
 u8 main(int argc, char* argv[]) {
 	openDisplay();
-	loadTextureToIndex(12, 12, GRASS_TILE, 0);
+	loadTextureToIndex(12, 12, TILE_IMG, 0);
 	while (shouldClose() != 1) {
+		float dt = tick(FPS);
+		// printf("%s%f\n", "DT: ", dt);
 		pollEvents();
-		tick(FPS);
 		clearScreen(55, 55, 55);
-		drawTexture(0, 0, 64, 64, 0);
+		for (u8 y = 0; y < 10; ++y) {
+			for (u8 x = 0; x < 16; ++x) {
+				drawTexture(x*64, y*64, 64, 64, 0);
+			}
+		}
 		
 		display();
 	}
