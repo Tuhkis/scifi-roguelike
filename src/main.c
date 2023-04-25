@@ -34,7 +34,7 @@ u8 main(int argc, char* argv[]) {
 		renderTiles(t);
 		static const ENTITY_ID i = ENT_PLAYER;
 
-		drawPlayer(*p);
+		drawPlayer(p);
 		// drawTexture(x, y, 64, 64, 2, 16, 16, 0, 0);
 		// M_DRAW_ENTITY(p->base, 255, 255, 0);
 		

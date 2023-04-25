@@ -6,9 +6,11 @@
 
 typedef struct {
 	 Entity base;
+	 float  animTimer;
+	 u8     vf, hf;
 } Player;
 
 Player* newPlayer(i32 x, i32 y);
 void playerTick(Player* p, float dt);
-void drawPlayer(Player p);
+void drawPlayer(Player* p);
 
