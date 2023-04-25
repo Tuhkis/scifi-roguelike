@@ -1,12 +1,12 @@
 #include "player.h"
 
 #include <stdlib.h>
-#include "../cPhyc/cPhyc.h"
 #include <math.h>
 
 #include "entity-id.h"
 #include "gfx.h"
 #include "input.h"
+#include "tilemap.h"
 
 #define P_SPEED 250
 
@@ -21,7 +21,7 @@ Player* newPlayer(i32 x, i32 y) {
 	return p;
 }
 
-void playerTick(Player* p, float dt) {
+void playerTick(Player* p, float dt, Tilemap tiles) {
 	// Movement code
 	i8 dx, dy = 0;
 	Input i    = getInput();
@@ -29,7 +29,7 @@ void playerTick(Player* p, float dt) {
 	dy         = i.mDown  - i.mUp;
 
 	moveAndCollide(
-		&p->base.rect, NULL, 0, 
+		&p->base.rect, tiles, TILES_LEN, 
 		dx * P_SPEED * dt, dy * P_SPEED * dt);
 	// Anim code
 	p->animTimer += dt * 1.9f;

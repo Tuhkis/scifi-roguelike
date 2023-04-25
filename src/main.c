@@ -19,7 +19,7 @@ u8 main(int argc, char* argv[]) {
 	loadTextureToIndex(16, 16, TILE_IMG,   1);
 	loadTextureToIndex(64, 64, PLAYER_IMG, 2);
 
-	Tilemap t = { {
+	Tilemap tiles = { {
 		{{0, 0, 64, 64}, 1, 0, 0}
 	} };
 
@@ -28,10 +28,10 @@ u8 main(int argc, char* argv[]) {
 		pollEvents();
 		float dt = tick(FPS);
 
-		playerTick(p, dt);
+		playerTick(p, dt, tiles);
 
 		clearScreen(55, 55, 55);
-		renderTiles(t);
+		renderTiles(tiles);
 		static const ENTITY_ID i = ENT_PLAYER;
 
 		drawPlayer(p);

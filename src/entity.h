@@ -1,8 +1,7 @@
 #pragma once
 #define ENTITY_H
 
-#include "../cPhyc/cPhyc.h"
-
+#include "tilemap.h"
 #include "entity-id.h"
 #include "gfx.h"
 
