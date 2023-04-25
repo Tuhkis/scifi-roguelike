@@ -52,7 +52,7 @@ void playerTick(Player* p, float dt, Tilemap tiles) {
 void drawPlayer(Player* p) {
 	drawTexture(
 		p->base.rect.x, p->base.rect.y,
-		p->base.rect.w, p->base.rect.h,
+		64, 64,
 		2, 16, 16, p->vf, p->hf, p->flip);
 }
 

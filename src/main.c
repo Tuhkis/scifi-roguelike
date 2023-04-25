@@ -20,7 +20,8 @@ u8 main(int argc, char* argv[]) {
 	loadTextureToIndex(64, 64, PLAYER_IMG, 2);
 
 	Tilemap tiles = { {
-		{{0, 0, 64, 64}, 1, 0, 0}
+		{{0, 0, 64, 64},     1, 0, 0},
+		{{128, 128, 64, 64}, 1, 0, 0},
 	} };
 
 	Player* p = newPlayer(64, 64);
