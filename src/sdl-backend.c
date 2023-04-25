@@ -17,7 +17,7 @@ struct SdlContext {
 
 void openDisplay() {
 	if (!SDL_Init(SDL_INIT_EVERYTHING)) {
-		printf("%s\n", "Couldn't intialise SDL2 ):");		
+		printf("%s\n", "Couldn't initialise SDL2 ):");		
 	}
 	context.window = SDL_CreateWindow(W_TITLE,
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
