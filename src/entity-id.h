@@ -3,5 +3,6 @@
 
 typedef enum {
 	ENT_DEFAULT,
+	ENT_PLAYER,
 } ENTITY_ID;
 
