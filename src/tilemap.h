@@ -1,10 +1,12 @@
 #pragma once
 #define TILEMAP_H
 
+#include "../cPhyc/cPhyc.h"
+
 #include "util.h"
 
 typedef struct {
-	i32 x, y;
+	Rect r;
 	u8 spr, fv, fh;
 } Tile;
 

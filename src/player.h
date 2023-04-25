@@ -9,4 +9,6 @@ typedef struct {
 } Player;
 
 Player* newPlayer(i32 x, i32 y);
+void playerTick(Player* p, float dt);
+void drawPlayer(Player p);
 
