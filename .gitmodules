@@ -1,0 +1,3 @@
+[submodule "cPhyc"]
+	path = cPhyc
+	url = https://github.com/Tuhkis/cPhyc.h
