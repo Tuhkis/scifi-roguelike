@@ -8,7 +8,7 @@
 
 #include "res.c"
 
-#define FPS 30
+#define FPS 60
 
 u8 main(int argc, char* argv[]) {
 	openDisplay();
@@ -17,11 +17,19 @@ u8 main(int argc, char* argv[]) {
 	loadTextureToIndex(64, 64, PLAYER_IMG, 2);
 
 	float x = 0;
+	float y = 0;
 	while (shouldClose() != 1) {
 		pollEvents();
 		float dt = tick(FPS);
 		if (getInput().mLeft == 1)
-			x += dt * 64.f;
+			x -= dt * 256.f;
+		if (getInput().mRight == 1)
+			x += dt * 256.f;
+		if (getInput().mUp == 1)
+			y -= dt * 256.f;
+		if (getInput().mDown == 1)
+			y += dt * 256.f;
+
 		// clearScreen(55, 55, 55);
 		for (u8 y = 0; y < 10; ++y) {
 			for (u8 x = 0; x < 16; ++x) {
@@ -31,7 +39,7 @@ u8 main(int argc, char* argv[]) {
 		for (u8 x = 0; x < 14; ++x) {
 			drawTexture(x*64+64, 0, 64, 64, 0, 16, 16, 0, 0);
 		}
-		drawTexture(x, 75, 64, 64, 2, 16, 16, 0, 0);
+		drawTexture(x, y, 64, 64, 2, 16, 16, 0, 0);
 		
 		display();
 	}

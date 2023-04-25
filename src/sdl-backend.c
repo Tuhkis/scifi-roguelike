@@ -29,11 +29,7 @@ void openDisplay() {
 	}
 
 	context.renderer = NULL;
-	#ifdef VSYNC
-	context.renderer = SDL_CreateRenderer(context.window, 0, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	#else
 	context.renderer = SDL_CreateRenderer(context.window, 0, SDL_RENDERER_ACCELERATED);
-	#endif
 	if (context.renderer == NULL) {
 		printf("%s\n", "Failed to create renderer");
 		exit(1);
