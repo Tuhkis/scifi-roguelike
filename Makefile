@@ -17,7 +17,7 @@ main.o: src/main.c
 res.o: src/res.c imgs
 	$(COMP) src/res.c
 
-sdl-backend.o: src/sdl-backend.c src/gfx.h src/fps.h
+sdl-backend.o: src/sdl-backend.c src/gfx.h src/fps.h src/input.h
 	$(COMP) src/sdl-backend.c
 
 sdl: all sdl-backend.o
