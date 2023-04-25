@@ -144,10 +144,15 @@ void loadTextureToIndex(u8 w, u8 h, const u8 data[], u8 index) {
 	SDL_FreeSurface(surface);
 }
 
-void drawTexture(i32 x, i32 y, u8 w, u8 h, u8 index, u8 sw, u8 sh, u8 hf, u8 vf) {
-	SDL_RenderCopy(context.renderer, context.textures[index],
-		&(SDL_Rect) {hf*sw, vf*sh, sw, sh},
-		&(SDL_Rect) {x, y, w, h});
+void drawTexture(i32 x, i32 y, u8 w, u8 h, u8 index, u8 sw, u8 sh, u8 hf, u8 vf, u8 flip) {
+	if (flip == 0)
+		SDL_RenderCopyEx(context.renderer, context.textures[index],
+			&(SDL_Rect) {hf*sw, vf*sh, sw, sh},
+			&(SDL_Rect) {x, y, w, h}, 0, NULL, SDL_FLIP_NONE);
+	if (flip == 1)
+		SDL_RenderCopyEx(context.renderer, context.textures[index],
+			&(SDL_Rect) {hf*sw, vf*sh, sw, sh},
+			&(SDL_Rect) {x, y, w, h}, 0, NULL, SDL_FLIP_HORIZONTAL);
 }
 
 Input getInput() {

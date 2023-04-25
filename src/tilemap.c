@@ -8,7 +8,7 @@ void renderTiles(Tilemap tiles) {
 			tiles.tiles[t].r.x * TILESIZE, tiles.tiles[t].r.y * TILESIZE,
 			TILESIZE, TILESIZE,
 			tiles.tiles[t].spr, 16, 16,
-			tiles.tiles[t].fv, tiles.tiles[t].fh);
+			tiles.tiles[t].fv, tiles.tiles[t].fh, 0);
 	}
 }
 

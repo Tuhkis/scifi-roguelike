@@ -7,7 +7,7 @@
 typedef struct {
 	 Entity base;
 	 float  animTimer;
-	 u8     vf, hf;
+	 u8     vf, hf, flip;
 } Player;
 
 Player* newPlayer(i32 x, i32 y);
