@@ -21,8 +21,11 @@ u8 main(int argc, char* argv[]) {
 
 	Tilemap tiles = { {
 		{{0, 0, 64, 64},     1, 0, 0},
-		{{64, 0, 64, 64}, 1, 0, 0},
-		{{128, 0, 64, 64}, 1, 0, 0},
+		{{64, 0, 64, 64},    1, 0, 0},
+		{{128, 0, 64, 64},   1, 0, 0},
+		{{128, 64, 64, 64},  1, 0, 0},
+		{{128, 128, 64, 64}, 1, 0, 0},
+		{{128, 256, 64, 64}, 1, 0, 0},
 	} };
 
 	Player* p = newPlayer(64, 64);
@@ -37,8 +40,6 @@ u8 main(int argc, char* argv[]) {
 		static const ENTITY_ID i = ENT_PLAYER;
 
 		drawPlayer(p);
-		// drawTexture(x, y, 64, 64, 2, 16, 16, 0, 0);
-		// M_DRAW_ENTITY(p->base, 255, 255, 0);
 		
 		display();
 	}

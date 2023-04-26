@@ -13,7 +13,7 @@
 Player* newPlayer(i32 x, i32 y) {
 	Player* p    = malloc(sizeof(Player));
 	p->base.id   = ENT_PLAYER;
-	p->base.rect = (Rect) {x, y, 64, 64};
+	p->base.rect = (Rect) {x, y, 57, 57};
 	p->flip = 0;
 	p->hf = 0;
 	p->vf = 0;
@@ -52,7 +52,7 @@ void playerTick(Player* p, float dt, Tilemap tiles) {
 void drawPlayer(Player* p) {
 	drawTexture(
 		p->base.rect.x, p->base.rect.y,
-		64, 64,
+		p->base.rect.w, p->base.rect.h,
 		2, 16, 16, p->vf, p->hf, p->flip);
 }
 
