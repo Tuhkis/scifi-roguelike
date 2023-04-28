@@ -3,13 +3,13 @@
 
 #include "util.h"
 
-#define BULLET_SPEED 512
+#define BULLET_SPEED 128
 typedef struct {
 	i32 x,  y;
-	i32 vx, vy;
+	float vx, vy;
 } Bullet;
 
-Bullet* newBullet(i32 x, i32 y, u16 rot);
+Bullet* newBullet(i32 x, i32 y, i16 dirX, i16 dirY);
 void tickBullet(Bullet* b, float dt);
 void drawBullet(Bullet* b);
 

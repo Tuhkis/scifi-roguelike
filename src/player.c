@@ -7,6 +7,7 @@
 #include "gfx.h"
 #include "input.h"
 #include "tilemap.h"
+#include "bullet.h"
 
 #define P_SPEED 250
 
@@ -21,7 +22,7 @@ Player* newPlayer(i32 x, i32 y) {
 	return p;
 }
 
-void playerTick(Player* p, float dt, Tilemap tiles) {
+void playerTick(Player* p, float dt, Tilemap tiles, Bullet** bullets) {
 	// Movement code
 	i8 dx, dy = 0;
 	Input i = getInput();

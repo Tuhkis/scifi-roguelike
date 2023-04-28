@@ -9,6 +9,7 @@
 #include "tilemap.h"
 #include "player.h"
 #include "entity.h"
+#include "bullet.h"
 
 #include "res.c"
 
@@ -30,19 +31,21 @@ u8 main(int argc, char* argv[]) {
 	} };
 
 	Player* p = newPlayer(64, 64);
+	// Bullet* b = newBullet(0, 75, 0);
+
 	while (shouldClose() != 1) {
 		pollEvents();
 		float dt = tick(FPS);
+		if (dt < 0.1) {
+			playerTick(p, dt, tiles, NULL);
 
-		playerTick(p, dt, tiles);
+			clearScreen(55, 55, 55);
+			renderTiles(tiles);
 
-		clearScreen(55, 55, 55);
-		renderTiles(tiles);
-		static const ENTITY_ID i = ENT_PLAYER;
-
-		drawPlayer(p);
+			drawPlayer(p);
 		
-		display();
+			display();
+		}
 	}
 	cleanGfx();
 	free(p);

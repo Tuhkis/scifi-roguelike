@@ -4,21 +4,22 @@
 #include <math.h>
 
 #include "gfx.h"
+#include "util.h"
 
-Bullet* newBullet(i32 x, i32 y, u16 rot) {
+Bullet* newBullet(i32 x, i32 y, i16 dirX, i16 dirY) {
 	Bullet* b = malloc(sizeof(Bullet));
 	b->x = x;
 	b->y = y;
 
-	b->vx = cosf(rot)  * BULLET_SPEED;
-	b->vy = -sinf(rot) * BULLET_SPEED;
+	b->vx = dirX * BULLET_SPEED;
+	b->vy = dirY * BULLET_SPEED;
 
 	return b;
 }
 
 void tickBullet(Bullet* b, float dt) {
-	b->x += b->vx * dt;
-	b->y += b->vy * dt;
+	b->x += floorf(b->vx * BULLET_SPEED * dt);
+	b->y += floorf(b->vy * BULLET_SPEED * dt);
 }
 
 void drawBullet(Bullet* b) {
