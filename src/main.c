@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 #include "util.h"
@@ -44,6 +45,7 @@ u8 main(int argc, char* argv[]) {
 		display();
 	}
 	cleanGfx();
+	free(p);
 	return 0;
 }
 

@@ -24,10 +24,10 @@ Player* newPlayer(i32 x, i32 y) {
 void playerTick(Player* p, float dt, Tilemap tiles) {
 	// Movement code
 	i8 dx, dy = 0;
-	Input i    = getInput();
-	dx         = i.mRight - i.mLeft;
-	dy         = i.mDown  - i.mUp;
-
+	Input i = getInput();
+	dx      = i.mRight - i.mLeft;
+	dy      = i.mDown  - i.mUp;
+	
 	moveAndCollide(
 		&p->base.rect, tiles, TILES_LEN, 
 		dx * P_SPEED * dt, dy * P_SPEED * dt);
@@ -53,6 +53,7 @@ void drawPlayer(Player* p) {
 	drawTexture(
 		p->base.rect.x, p->base.rect.y,
 		p->base.rect.w, p->base.rect.h,
-		2, 16, 16, p->vf, p->hf, p->flip);
+		2, 16, 16, p->vf, p->hf, p->flip
+	);
 }
 
