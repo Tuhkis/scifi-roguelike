@@ -18,8 +18,13 @@ Bullet* newBullet(i32 x, i32 y, i16 dirX, i16 dirY) {
 }
 
 void tickBullet(Bullet* b, float dt) {
-	b->x += floorf(b->vx * BULLET_SPEED * dt);
-	b->y += floorf(b->vy * BULLET_SPEED * dt);
+	// i32 vx = b->vx;
+	// i32 vy = floorf(b->vy * BULLET_SPEED * dt);
+	float vx = (b->vx) / DISTANCE(0, 0, b->vx, b->vy);
+	float vy = (b->vy) / DISTANCE(0, 0, b->vx, b->vy);
+
+	b->x += (roundf(vx * BULLET_SPEED * dt));
+	b->y += (roundf(vy * BULLET_SPEED * dt));
 }
 
 void drawBullet(Bullet* b) {

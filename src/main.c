@@ -34,7 +34,7 @@ u8 main(int argc, char* argv[]) {
 
 	Bullet* p_bullets[64] = { 0 };
 	for (u8 i = 0; i < 64; ++i)
-		p_bullets[i] = NULL;
+		p_bullets[i] = newBullet(0, 0, 64, 64);
 
 	while (shouldClose() != 1) {
 		pollEvents();

@@ -3,7 +3,7 @@
 
 #include "util.h"
 
-#define BULLET_SPEED 128
+#define BULLET_SPEED 128.f
 typedef struct {
 	i32 x,  y;
 	float vx, vy;

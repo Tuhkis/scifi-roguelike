@@ -12,11 +12,12 @@
 #define P_SPEED 250
 
 u8 bi = 0;
-void shoot(Bullet** b, Player* p) {
-	b[bi] = newBullet(p->base.rect.x, p->base.rect.y, 1, 0);
-	++b;
+float t = 0;
+void shoot(Bullet** b, Player* p, i8 vx, i8 vy) {
+	b[bi] = newBullet(p->base.rect.x, p->base.rect.y, vx, vy);
+	++bi;
 	if (bi > 64)
-		b = 0;
+		bi = 0;
 	// newBullet(i32 x, i32 y, i16 dirX, i16 dirY)
 }
 
@@ -59,8 +60,13 @@ void playerTick(Player* p, float dt, Tilemap tiles, Bullet** bullets) {
 	}
 
 	// Shooting code
-	if (i.sRight)
-		shoot(bullets, p);
+	t += dt;
+	if (( i.sRight || i.sLeft || i.sDown || i.sUp ) && (t > .05f)) {
+		shoot(bullets, p,
+			i.sRight - i.sLeft,
+			i.sDown  - i.sUp);
+		t = 0;
+	}
 }
 
 void drawPlayer(Player* p) {
