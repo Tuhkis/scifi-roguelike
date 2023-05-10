@@ -31,18 +31,25 @@ u8 main(int argc, char* argv[]) {
 	} };
 
 	Player* p = newPlayer(64, 64);
-	// Bullet* b = newBullet(0, 75, 0);
+
+	Bullet* p_bullets[64] = { 0 };
+	for (u8 i = 0; i < 64; ++i)
+		p_bullets[i] = NULL;
 
 	while (shouldClose() != 1) {
 		pollEvents();
 		float dt = tick(FPS);
 		if (dt < 0.1) {
-			playerTick(p, dt, tiles, NULL);
+			playerTick(p, dt, tiles, p_bullets);
+			for (u8 i = 0; i < 64; ++i)
+				tickBullet(p_bullets[i], dt);
 
 			clearScreen(55, 55, 55);
 			renderTiles(tiles);
 
 			drawPlayer(p);
+			for (u8 i = 0; i < 64; ++i)
+				drawBullet(p_bullets[i]);
 		
 			display();
 		}

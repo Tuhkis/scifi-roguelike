@@ -5,7 +5,8 @@
 
 typedef struct {
 	u8	
-	mUp, mDown, mRight, mLeft;
+	mUp, mDown, mRight, mLeft, // Movement
+	sUp, sDown, sRight, sLeft; // Shootin'
 } Input;
 
 Input getInput();

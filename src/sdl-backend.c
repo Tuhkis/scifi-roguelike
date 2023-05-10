@@ -16,7 +16,7 @@ struct SdlContext {
 }; struct SdlContext context = { 0 };
 
 void openDisplay() {
-	if (!SDL_Init(SDL_INIT_EVERYTHING)) {
+	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
 		printf("%s\n", "Couldn't initialise SDL2 ):");		
 	}
 	context.window = NULL;
@@ -51,6 +51,11 @@ void handleInput() {
 				KEY(SDLK_w, context.input.mUp,    1);
 				KEY(SDLK_s, context.input.mDown,  1);
 
+				KEY(SDLK_LEFT,  context.input.sLeft,  1);
+				KEY(SDLK_RIGHT, context.input.sRight, 1);
+				KEY(SDLK_UP,    context.input.sUp,    1);
+				KEY(SDLK_DOWN,  context.input.sDown,  1);
+
 				default:
 					break;
 			}
@@ -61,6 +66,11 @@ void handleInput() {
 				KEY(SDLK_d, context.input.mRight, 0);
 				KEY(SDLK_w, context.input.mUp,    0);
 				KEY(SDLK_s, context.input.mDown,  0);
+
+				KEY(SDLK_LEFT,  context.input.sLeft,  0);
+				KEY(SDLK_RIGHT, context.input.sRight, 0);
+				KEY(SDLK_UP,    context.input.sUp,    0);
+				KEY(SDLK_DOWN,  context.input.sDown,  0);
 
 				default:
 					break;
