@@ -8,6 +8,7 @@
 #include "input.h"
 #include "tilemap.h"
 #include "bullet.h"
+#include "util.h"
 
 #define P_SPEED 250
 
@@ -18,7 +19,6 @@ void shoot(Bullet** b, Player* p, i8 vx, i8 vy) {
 	++bi;
 	if (bi > 64)
 		bi = 0;
-	// newBullet(i32 x, i32 y, i16 dirX, i16 dirY)
 }
 
 Player* newPlayer(i32 x, i32 y) {
@@ -34,14 +34,20 @@ Player* newPlayer(i32 x, i32 y) {
 
 void playerTick(Player* p, float dt, Tilemap tiles, Bullet** bullets) {
 	// Movement code
-	i8 dx, dy = 0;
+	i8 dx, dy = 0.f;
 	Input i = getInput();
 	dx      = i.mRight - i.mLeft;
 	dy      = i.mDown  - i.mUp;
+
+	float mx = dx;
+	float my = dy;
+	mx = roundf(mx / DISTANCE(0, 0, mx, my));
+	my = roundf(my / DISTANCE(0, 0, mx, my));
 	
 	moveAndCollide(
 		&p->base.rect, tiles, TILES_LEN, 
 		dx * P_SPEED * dt, dy * P_SPEED * dt);
+
 	// Anim code
 	p->animTimer += dt * 1.9f;
 	if (abs( dx + dy ) > 0) {
@@ -61,7 +67,7 @@ void playerTick(Player* p, float dt, Tilemap tiles, Bullet** bullets) {
 
 	// Shooting code
 	t += dt;
-	if (( i.sRight || i.sLeft || i.sDown || i.sUp ) && (t > .05f)) {
+	if (( i.sRight || i.sLeft || i.sDown || i.sUp ) && (t > .35f)) {
 		shoot(bullets, p,
 			i.sRight - i.sLeft,
 			i.sDown  - i.sUp);

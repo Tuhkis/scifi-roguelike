@@ -22,7 +22,8 @@ u8 main(int argc, char* argv[]) {
 	loadTextureToIndex(64, 64, PLAYER_IMG, 2);
 
 	Tilemap tiles = { {
-		{{0, 0, 64, 64},     1, 0, 0},
+		{{0, 0, 64, 64},     1, 0, 0}, // I'm don't understand
+		{{0, 0, 64, 64},     1, 0, 0}, // why I need this twice
 		{{64, 0, 64, 64},    1, 0, 0},
 		{{128, 0, 64, 64},   1, 0, 0},
 		{{128, 64, 64, 64},  1, 0, 0},
