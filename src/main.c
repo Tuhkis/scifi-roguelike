@@ -24,7 +24,7 @@ u8 main(int argc, char* argv[]) {
 
 	Tilemap tiles = { {
 		{{0, 0, 64, 64},     1, 0, 0}, // I don't understand
-		{{0, 0, 64, 64},     1, 0, 0}, // why I need this twice
+		// {{0, 0, 64, 64},     2, 0, 0}, // why I need this twice
 		{{64, 0, 64, 64},    1, 0, 0},
 		{{128, 0, 64, 64},   1, 0, 0},
 		{{128, 64, 64, 64},  1, 0, 0},
@@ -38,7 +38,7 @@ u8 main(int argc, char* argv[]) {
 
 	Bullet* p_bullets[64] = { 0 };
 	for (u8 i = 0; i < 64; ++i)
-		p_bullets[i] = newBullet(0, 0, 64, 64);
+		p_bullets[i] = NULL;
 
 	while (shouldClose() != 1) {
 		pollEvents();
@@ -46,8 +46,11 @@ u8 main(int argc, char* argv[]) {
 		if (dt < 0.1) {
 			playerTick(p, dt, tiles, p_bullets);
 			for (u8 i = 0; i < 64; ++i)
-				tickBullet(p_bullets[i], dt);
+				if (p_bullets[i] != NULL)
+					tickBullet(p_bullets[i], dt);
 
+		}
+		{
 			// Camera code
 			cam.trauma += -cam.trauma * dt;
 			
@@ -59,7 +62,8 @@ u8 main(int argc, char* argv[]) {
 
 			drawPlayer(p, cam);
 			for (u8 i = 0; i < 64; ++i)
-				drawBullet(p_bullets[i], cam);
+				if (p_bullets[i] != NULL)
+					drawBullet(p_bullets[i], cam);
 		
 			display();
 		}

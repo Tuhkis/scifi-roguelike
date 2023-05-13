@@ -120,7 +120,7 @@ void cleanGfx() {
 
 float tick(u16 fps) {
 	context.now = SDL_GetPerformanceCounter();
-	SDL_Delay(1000 / 60);
+	SDL_Delay(1000 / fps);
 	float dt = (context.now - context.prev) / (float)SDL_GetPerformanceFrequency();
 	context.prev = context.now;
 	return dt;

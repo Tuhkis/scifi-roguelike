@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-O3 -pipe -static
+CFLAGS=-O3 -pipe
 OUT=scifi-game
 PYTHON=python3
 LIB=-lm
