@@ -23,7 +23,7 @@ u8 main(int argc, char* argv[]) {
 	loadTextureToIndex(64, 64, PLAYER_IMG, 2);
 
 	Tilemap tiles = { {
-		{{0, 0, 64, 64},     1, 0, 0}, // I'm don't understand
+		{{0, 0, 64, 64},     1, 0, 0}, // I don't understand
 		{{0, 0, 64, 64},     1, 0, 0}, // why I need this twice
 		{{64, 0, 64, 64},    1, 0, 0},
 		{{128, 0, 64, 64},   1, 0, 0},
@@ -66,6 +66,10 @@ u8 main(int argc, char* argv[]) {
 	}
 	cleanGfx();
 	free(p);
+	for (u8 i = 0; i < 64; ++i)
+		free(p_bullets[i]);
+	
+	exit(0);
 	return 0;
 }
 
