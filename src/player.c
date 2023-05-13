@@ -24,7 +24,7 @@ void shoot(Bullet** b, Player* p, i8 vx, i8 vy) {
 Player* newPlayer(i32 x, i32 y) {
 	Player* p    = malloc(sizeof(Player));
 	p->base.id   = ENT_PLAYER;
-	p->base.rect = (Rect) {x, y, 57, 57};
+	p->base.rect = (Rect) {x, y, PLAYER_WI, PLAYER_HE};
 	p->flip = 0;
 	p->hf = 0;
 	p->vf = 0;

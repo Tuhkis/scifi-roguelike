@@ -132,19 +132,24 @@ void drawRect(i32 x, i32 y, u16 w, u16 h, u8 r, u8 g, u8 b) {
 }
 
 void loadTextureToIndex(u8 w, u8 h, const u8 data[], u8 index) {
-	SDL_Surface* surface = SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, w, h, 24, SDL_PIXELFORMAT_ARGB8888);
+	SDL_Surface* surface =
+		SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, w, h, 24, SDL_PIXELFORMAT_ARGB8888);
+
 	SDL_SetSurfaceBlendMode(surface, SDL_BLENDMODE_BLEND);
 	for (u8 y = 0; y < h; ++y) {
 		for (u8 x = 0; x < w; ++x) {
-			int p = (y*w+x)*3;
-			u32 colour;
+			SDL_LockSurface(surface);
+			{
+				int p = (y*w+x)*3;
+				u32 colour;
 			
-			colour =
-				(255 << 24) | (data[p] << 16) | ( data[p+1] << 8 ) | (data[p+2]);
-			if (!(data[p] == 230 && data[p+1] == 24 && data[p+2] == 255)) {
-				SDL_FillRect(surface,
-					&(SDL_Rect) {x, y, 1, 1},
-					colour);
+				colour =
+					(255 << 24) | (data[p] << 16) | ( data[p+1] << 8 ) | (data[p+2]);
+				if (!(data[p] == 230 && data[p+1] == 24 && data[p+2] == 255)) {
+					SDL_FillRect(surface,
+						&(SDL_Rect) {x, y, 1, 1},
+						colour);
+				}
 			}
 		}
 	}

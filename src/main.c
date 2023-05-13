@@ -51,9 +51,8 @@ u8 main(int argc, char* argv[]) {
 			// Camera code
 			cam.trauma += -cam.trauma * dt;
 			
-			cam.x += ((p->base.rect.x - W_WIDTH * .5f + 57) - cam.x) * .2f;
-			cam.y += (
-				(p->base.rect.y - W_HEIGHT * .5f + 57 * 2) - cam.y) * .2f;
+			cam.x = (p->base.rect.x - W_WIDTH * .5f + PLAYER_WI);
+			cam.y = (p->base.rect.y - W_HEIGHT * .5f + PLAYER_HE * 2);
 
 			clearScreen(55, 55, 55);
 			renderTiles(tiles, cam);

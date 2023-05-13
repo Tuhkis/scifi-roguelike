@@ -17,5 +17,5 @@ typedef struct {
 	(i32)(c.x - sinf(c.trauma) * c.trauma)
 
 #define CAMY(c) \
-	(i32)(c.y - sinf(c.trauma) * c.trauma)
+	(i32)(c.y - cosf(c.trauma * 2.f) * c.trauma)
 

@@ -7,6 +7,9 @@
 #include "bullet.h"
 #include "camera.h"
 
+#define PLAYER_WI 55
+#define PLAYER_HE 55
+
 typedef struct {
 	 Entity base;
 	 float  animTimer;
