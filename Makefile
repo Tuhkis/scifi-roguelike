@@ -6,16 +6,13 @@ LIB=-lm
 
 COMP=$(CC) $(CFLAGS) -c
 
-all: imgs main.o camera.o res.o tilemap.o player.o bullet.o
+all: imgs main.o camera.o tilemap.o player.o bullet.o
 
 imgs: res/*.ppm
 	$(PYTHON) scripts/resources.py
 
 main.o: src/main.c
 	$(COMP) src/main.c
-
-res.o: src/res.c imgs
-	$(COMP) src/res.c
 
 tilemap.o: src/tilemap.c src/tilemap.h
 	$(COMP) src/tilemap.c
