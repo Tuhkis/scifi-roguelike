@@ -2,6 +2,7 @@
 #define TILEMAP_H
 
 #include "util.h"
+#include "camera.h"
 
 typedef struct {
 	int x, y, w, h;
@@ -47,5 +48,5 @@ static void moveAndCollide(Rect* rect, Tilemap tiles, int tilesLen, int velx, in
 	*rect = r;
 }
 
-void renderTiles(Tilemap tiles);
+void renderTiles(Tilemap tiles, Camera cam);
 

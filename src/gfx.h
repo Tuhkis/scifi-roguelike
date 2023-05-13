@@ -3,7 +3,7 @@
 
 #include "util.h"
 
-#define W_TITLE "Sci-fi rpg"
+#define W_TITLE "Sci-fi roguelike"
 #define W_WIDTH 1024
 #define W_HEIGHT 512+128
 

@@ -2,6 +2,7 @@
 #define BULLET_H
 
 #include "util.h"
+#include "camera.h"
 
 #define BULLET_SPEED 450.f
 typedef struct {
@@ -11,5 +12,5 @@ typedef struct {
 
 Bullet* newBullet(i32 x, i32 y, i16 dirX, i16 dirY);
 void tickBullet(Bullet* b, float dt);
-void drawBullet(Bullet* b);
+void drawBullet(Bullet* b, Camera cam);
 

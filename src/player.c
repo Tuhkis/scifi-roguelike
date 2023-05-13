@@ -75,9 +75,9 @@ void playerTick(Player* p, float dt, Tilemap tiles, Bullet** bullets) {
 	}
 }
 
-void drawPlayer(Player* p) {
+void drawPlayer(Player* p, Camera cam) {
 	drawTexture(
-		p->base.rect.x, p->base.rect.y,
+		p->base.rect.x - CAMX(cam), p->base.rect.y - CAMY(cam),
 		p->base.rect.w, p->base.rect.h,
 		2, 16, 16, p->vf, p->hf, p->flip
 	);

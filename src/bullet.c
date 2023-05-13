@@ -27,9 +27,9 @@ void tickBullet(Bullet* b, float dt) {
 	b->y += (roundf(vy * BULLET_SPEED * dt));
 }
 
-void drawBullet(Bullet* b) {
+void drawBullet(Bullet* b, Camera cam) {
 	drawTexture(
-		b->x, b->y,
+		b->x - CAMX(cam), b->y - CAMY(cam),
 		16, 16, 1, 16, 16, 0, 0, 0
 	);
 }

@@ -5,6 +5,7 @@
 #include "util.h"
 #include "tilemap.h"
 #include "bullet.h"
+#include "camera.h"
 
 typedef struct {
 	 Entity base;
@@ -14,5 +15,5 @@ typedef struct {
 
 Player* newPlayer(i32 x, i32 y);
 void playerTick(Player* p, float dt, Tilemap tiles, Bullet** bullets);
-void drawPlayer(Player* p);
+void drawPlayer(Player* p, Camera cam);
 

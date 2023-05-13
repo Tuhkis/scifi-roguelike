@@ -10,6 +10,7 @@
 #include "player.h"
 #include "entity.h"
 #include "bullet.h"
+#include "camera.h"
 
 #include "res.c"
 
@@ -31,6 +32,8 @@ u8 main(int argc, char* argv[]) {
 		{{128, 256, 64, 64}, 1, 0, 0},
 	} };
 
+	Camera cam = (Camera) {0, 0, 50};
+
 	Player* p = newPlayer(64, 64);
 
 	Bullet* p_bullets[64] = { 0 };
@@ -45,12 +48,19 @@ u8 main(int argc, char* argv[]) {
 			for (u8 i = 0; i < 64; ++i)
 				tickBullet(p_bullets[i], dt);
 
-			clearScreen(55, 55, 55);
-			renderTiles(tiles);
+			// Camera code
+			cam.trauma += -cam.trauma * dt;
+			
+			cam.x += ((p->base.rect.x - W_WIDTH * .5f + 57) - cam.x) * .2f;
+			cam.y += (
+				(p->base.rect.y - W_HEIGHT * .5f + 57 * 2) - cam.y) * .2f;
 
-			drawPlayer(p);
+			clearScreen(55, 55, 55);
+			renderTiles(tiles, cam);
+
+			drawPlayer(p, cam);
 			for (u8 i = 0; i < 64; ++i)
-				drawBullet(p_bullets[i]);
+				drawBullet(p_bullets[i], cam);
 		
 			display();
 		}
