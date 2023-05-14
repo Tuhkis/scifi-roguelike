@@ -7,8 +7,8 @@
 #include "bullet.h"
 #include "camera.h"
 
-#define PLAYER_WI 55
-#define PLAYER_HE 55
+#define PLAYER_WI 42
+#define PLAYER_HE 42
 
 typedef struct {
 	 Entity base;
