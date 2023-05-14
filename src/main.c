@@ -21,7 +21,6 @@ u8 main(int argc, char* argv[]) {
 		aSin[i] = sinf(i);
 
 	openDisplay();
-	// loadTextureToIndex(16, 16, TILE2_IMG,  0);
 	loadTextureToIndex(16, 16, TILE_IMG,   1);
 	loadTextureToIndex(64, 64, PLAYER_IMG, 2);
 
@@ -53,8 +52,7 @@ u8 main(int argc, char* argv[]) {
 				if (p_bullets[i] != NULL)
 					tickBullet(p_bullets[i], dt);
 
-		}
-		{
+		}{
 			// Camera code
 			cam.trauma += -cam.trauma * dt;
 			

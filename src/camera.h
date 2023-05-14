@@ -17,5 +17,5 @@ static float aSin[255] = {0};
 	(c.x - (aSin[c.trauma] * c.trauma))
 
 #define CAMY(c) \
-	(c.y - (aSin[c.trauma] * c.trauma))
+	(c.y - (aSin[c.trauma + 90] * c.trauma))
 
