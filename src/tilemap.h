@@ -57,3 +57,6 @@ static void moveAndCollide(Rect* rect, Tilemap tiles, int tilesLen, int velx, in
 
 void renderTiles(Tilemap tiles, Camera cam);
 
+void addRoomToTiles(Tilemap* tiles, i32 x, i32 y);
+
+

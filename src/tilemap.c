@@ -13,3 +13,8 @@ void renderTiles(Tilemap tiles, Camera cam) {
 	}
 }
 
+void addRoomToTiles(Tilemap* tiles, i32 x, i32 y) {
+	/* TODO: Everything.
+	*/
+}
+
