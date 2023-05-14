@@ -8,7 +8,6 @@
 #define W_HEIGHT 512+128
 
 #define TEXURES_LEN 16
-#define PIX_SIZE 4
 
 void openDisplay();
 void pollEvents();

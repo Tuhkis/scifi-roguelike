@@ -24,7 +24,8 @@ u8 main(int argc, char* argv[]) {
 
 	Tilemap tiles = { {
 		{{0, 0, 64, 64},     1, 0, 0}, // I don't understand
-		// {{0, 0, 64, 64},     2, 0, 0}, // why I need this twice
+		{{0, 0, 64, 64},     1, 0, 0}, // why I need this twice
+		{{0, 0, 64, 64},     1, 0, 0},
 		{{64, 0, 64, 64},    1, 0, 0},
 		{{128, 0, 64, 64},   1, 0, 0},
 		{{128, 64, 64, 64},  1, 0, 0},

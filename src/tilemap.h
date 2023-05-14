@@ -5,7 +5,7 @@
 #include "camera.h"
 
 typedef struct {
-	int x, y, w, h;
+	i32 x, y, w, h;
 } Rect;
 
 typedef struct {
@@ -20,7 +20,11 @@ typedef struct {
 	Tile tiles[TILES_LEN];
 } Tilemap;
 
-#define collideRect(rect1, rect2) (rect1.x + rect1.w > rect2.x && rect1.x < rect2.x + rect2.w && rect1.y + rect1.h > rect2.y && rect1.y < rect2.y + rect2.h)
+#define collideRect(rect1, rect2) \
+	(rect1.x + rect1.w > rect2.x && \
+	 rect1.x < rect2.x + rect2.w && \
+	 rect1.y + rect1.h > rect2.y && \
+	 rect1.y < rect2.y + rect2.h)
 
 static void moveAndCollide(Rect* rect, Tilemap tiles, int tilesLen, int velx, int vely) {
 	Rect r = *rect;
