@@ -14,7 +14,10 @@ typedef struct {
 } Tile;
 
 #define TILES_LEN 512
-#define TILESIZE  64
+#define TILESIZE 64
+
+#define TILE(x, y, s, fv, fh) \
+	{{x*TILESIZE, y*TILESIZE, TILESIZE, TILESIZE}, s, fv, fh}
 
 typedef struct {
 	Tile tiles[TILES_LEN];
