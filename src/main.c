@@ -17,10 +17,8 @@
 #define FPS 60
 
 u8 main(int argc, char* argv[]) {
-	for (u8 i = 0; i < 255; ++i) {
+	for (u8 i = 0; i < 255; ++i)
 		aSin[i] = sinf(i);
-		printf("%d: %f\n", i, aSin[i]);
-	}
 
 	openDisplay();
 	// loadTextureToIndex(16, 16, TILE2_IMG,  0);
