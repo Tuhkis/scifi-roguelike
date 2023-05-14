@@ -12,7 +12,6 @@ typedef int16_t i16;
 typedef int32_t i32;
 typedef int64_t i64;
 
-
 #define TRACE(a) printf("%s %d: %s\n", __FILE__, __LINE__, a)
 #define DISTANCE(x1, y1, x2, y2) \
 	(sqrtf( powf(x1-x2, 2) + powf(y1-y2, 2) ))

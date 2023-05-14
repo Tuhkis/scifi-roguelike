@@ -10,12 +10,12 @@ typedef struct {
 	u8 trauma;
 } Camera;
 
-// i32 getCamX(Camera c);
-// i32 getCamY(Camera c);
+static float aSin[255] = {0};
+// static float aCos[255] = {0};
 
 #define CAMX(c) \
-	(i32)(c.x - sinf(c.trauma) * c.trauma)
+	(c.x - (aSin[c.trauma] * c.trauma))
 
 #define CAMY(c) \
-	(i32)(c.y - cosf(c.trauma * 2.f) * c.trauma)
+	(c.y - (aSin[c.trauma] * c.trauma))
 

@@ -17,6 +17,11 @@
 #define FPS 60
 
 u8 main(int argc, char* argv[]) {
+	for (u8 i = 0; i < 255; ++i) {
+		aSin[i] = sinf(i);
+		printf("%d: %f\n", i, aSin[i]);
+	}
+
 	openDisplay();
 	// loadTextureToIndex(16, 16, TILE2_IMG,  0);
 	loadTextureToIndex(16, 16, TILE_IMG,   1);
@@ -33,7 +38,7 @@ u8 main(int argc, char* argv[]) {
 		{{128, 256, 64, 64}, 1, 0, 0},
 	} };
 
-	Camera cam = (Camera) {0, 0, 50};
+	Camera cam = (Camera) {0, 0, 250};
 
 	Player* p = newPlayer(64, 64);
 
@@ -56,15 +61,17 @@ u8 main(int argc, char* argv[]) {
 			cam.trauma += -cam.trauma * dt;
 			
 			cam.x = (p->base.rect.x - W_WIDTH * .5f + PLAYER_WI);
-			cam.y = (p->base.rect.y - W_HEIGHT * .5f + PLAYER_HE * 2);
+			cam.y = (p->base.rect.y - W_HEIGHT * .5f + PLAYER_HE * 3);
+
+			Camera aCam = { CAMX(cam), CAMY(cam), 0 };
 
 			clearScreen(55, 55, 55);
-			renderTiles(tiles, cam);
+			renderTiles(tiles, aCam);
 
-			drawPlayer(p, cam);
+			drawPlayer(p, aCam);
 			for (u8 i = 0; i < 64; ++i)
 				if (p_bullets[i] != NULL)
-					drawBullet(p_bullets[i], cam);
+					drawBullet(p_bullets[i], aCam);
 		
 			display();
 		}
