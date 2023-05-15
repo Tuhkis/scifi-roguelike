@@ -13,11 +13,8 @@ typedef struct {
 	u8 spr, fv, fh;
 } Tile;
 
-#define TILES_LEN 5024
+#define TILES_LEN 512
 #define TILESIZE 64
-
-#define HASHTILE(t) \
-	(((t.r.x + t.r.y) / t.r.y) % TILES_LEN)
 
 #define TILE(x, y, s, fv, fh) \
 	(Tile){{x*TILESIZE, y*TILESIZE, TILESIZE, TILESIZE}, s, fv, fh}
