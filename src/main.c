@@ -24,20 +24,12 @@ u8 main(int argc, char* argv[]) {
 	loadTextureToIndex(16, 16, TILE_IMG,   1);
 	loadTextureToIndex(64, 64, PLAYER_IMG, 2);
 
-	Tilemap tiles = { {
-		TILE(0, 0, 1, 0, 0),
-		TILE(1, 1, 1, 0, 0),
-		TILE(2, 2, 1, 0, 0),
-		TILE(3, 3, 1, 0, 0),
-		TILE(4, 4, 1, 0, 0),
+	Tilemap tiles = { {0} };
+	addRoomToTiles(&tiles, 0, 0);
+	addRoomToTiles(&tiles, 1, 1);
+	addRoomToTiles(&tiles, 1, 0);
 
-		TILE(-1, 1, 1, 0, 0),
-		TILE(-2, 2, 1, 0, 0),
-		TILE(-3, 3, 1, 0, 0),
-		TILE(-4, 4, 1, 0, 0),
-	} };
-
-	Camera cam = (Camera) {0, 0, 255};
+	Camera cam = (Camera) {0, 0, 0};
 
 	Player* p = newPlayer(64, 64);
 
