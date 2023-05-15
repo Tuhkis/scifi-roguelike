@@ -14,8 +14,8 @@ static float aSin[255] = {0};
 // static float aCos[255] = {0};
 
 #define CAMX(c) \
-	(c.x - (aSin[c.trauma] * c.trauma))
+	(c.x - (aSin[c.trauma] * 16))
 
 #define CAMY(c) \
-	(c.y - (aSin[c.trauma + 90] * c.trauma))
+	(c.y - (aSin[c.trauma + 90] * 16))
 

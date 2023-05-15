@@ -37,7 +37,7 @@ u8 main(int argc, char* argv[]) {
 		TILE(-4, 4, 1, 0, 0),
 	} };
 
-	Camera cam = (Camera) {0, 0, 250};
+	Camera cam = (Camera) {0, 0, 255};
 
 	Player* p = newPlayer(64, 64);
 
@@ -56,7 +56,7 @@ u8 main(int argc, char* argv[]) {
 
 		}{
 			// Camera code
-			cam.trauma += -cam.trauma * dt;
+			cam.trauma -= cam.trauma * dt;
 			
 			cam.x = (p->base.rect.x - W_WIDTH * .5f + PLAYER_WI);
 			cam.y = (p->base.rect.y - W_HEIGHT * .5f + PLAYER_HE * 3);
