@@ -23,11 +23,10 @@ u8 main(int argc, char* argv[]) {
 	openDisplay();
 	loadTextureToIndex(16, 16, TILE_IMG,   1);
 	loadTextureToIndex(64, 64, PLAYER_IMG, 2);
+	loadTextureToIndex(16, 16, BULLET_IMG, 3);
 
 	Tilemap tiles = { {0} };
 	addRoomToTiles(&tiles, 0, 0);
-	addRoomToTiles(&tiles, 1, 1);
-	addRoomToTiles(&tiles, 1, 0);
 
 	Camera cam = (Camera) {0, 0, 0};
 
@@ -44,7 +43,7 @@ u8 main(int argc, char* argv[]) {
 			playerTick(p, dt, tiles, p_bullets);
 			for (u8 i = 0; i < 64; ++i)
 				if (p_bullets[i] != NULL)
-					tickBullet(p_bullets[i], dt);
+					tickBullet(p_bullets[i], dt, tiles);
 
 		}{
 			// Camera code
@@ -56,12 +55,15 @@ u8 main(int argc, char* argv[]) {
 			Camera aCam = { CAMX(cam), CAMY(cam), 0 };
 
 			clearScreen(55, 55, 55);
-			renderTiles(tiles, aCam);
+
+			drawTexture(0, 0, 64, 64, 3, 16, 16, 0, 0, 0);
 
 			drawPlayer(p, aCam);
 			for (u8 i = 0; i < 64; ++i)
 				if (p_bullets[i] != NULL)
 					drawBullet(p_bullets[i], aCam);
+
+			renderTiles(tiles, aCam);
 		
 			display();
 		}

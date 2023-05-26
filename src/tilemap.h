@@ -16,6 +16,9 @@ typedef struct {
 #define TILES_LEN 512
 #define TILESIZE 64
 
+#define ROOM_W 8
+#define ROOM_H 8
+
 #define TILE(x, y, s, fv, fh) \
 	(Tile){{x*TILESIZE, y*TILESIZE, TILESIZE, TILESIZE}, s, fv, fh}
 
@@ -57,8 +60,6 @@ static void moveAndCollide(Rect* rect, Tilemap tiles, int tilesLen, int velx, in
 
 void renderTiles(Tilemap tiles, Camera cam);
 
-#define ROOM_W 10
-#define ROOM_H 8
+void genMap(Tilemap* tiles, i32 x, i32 y);
 void addRoomToTiles(Tilemap* tiles, i32 x, i32 y);
-
 

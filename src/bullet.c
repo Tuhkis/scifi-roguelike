@@ -17,7 +17,7 @@ Bullet* newBullet(i32 x, i32 y, i16 dirX, i16 dirY) {
 	return b;
 }
 
-void tickBullet(Bullet* b, float dt) {
+void tickBullet(Bullet* b, float dt, Tilemap tiles) {
 	// i32 vx = b->vx;
 	// i32 vy = floorf(b->vy * BULLET_SPEED * dt);
 	float vx = (b->vx) / DISTANCE(0, 0, b->vx, b->vy);
@@ -25,12 +25,29 @@ void tickBullet(Bullet* b, float dt) {
 
 	b->x += (roundf(vx * BULLET_SPEED * dt));
 	b->y += (roundf(vy * BULLET_SPEED * dt));
+
+	u8 c = 0;
+	Rect ti = { b->x, b->y, 16, 16 };
+	for ( u16 t = TILES_LEN; t > 0; --t ) {
+		if ( collideRect(ti, tiles.tiles[t].r) ) {
+			c = 1;
+		}
+	}
+	if (c == 1) {
+		b->x = 0;
+		b->y = 0;
+		b->vx = 0;
+		b->vy = 0;
+
+		b = NULL;
+	}
 }
 
 void drawBullet(Bullet* b, Camera cam) {
-	drawTexture(
-		b->x - CAMX(cam), b->y - CAMY(cam),
-		16, 16, 1, 16, 16, 0, 0, 0
-	);
+	if (b->vx != 0 || b->vy != 0)
+		drawTexture(
+			b->x - CAMX(cam), b->y - CAMY(cam),
+			16, 16, 3, 16, 16, 0, 0, 0
+		);
 }
 
