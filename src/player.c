@@ -39,14 +39,15 @@ void playerTick(Player* p, float dt, Tilemap tiles, Bullet** bullets) {
 	dx      = i.mRight - i.mLeft;
 	dy      = i.mDown  - i.mUp;
 
-	float mx = dx;
+	/* float mx = dx;
 	float my = dy;
-	mx = roundf(mx / DISTANCE(0, 0, mx, my));
-	my = roundf(my / DISTANCE(0, 0, mx, my));
+	mx = roundf(dx / DISTANCE(0, 0, dx, dy));
+	my = roundf(dy / DISTANCE(0, 0, dx, dy)); */
 	
 	moveAndCollide(
 		&p->base.rect, tiles, TILES_LEN, 
-		dx * P_SPEED * dt, dy * P_SPEED * dt);
+		dx * P_SPEED * dt,
+		dy * P_SPEED * dt);
 
 	// Anim code
 	p->animTimer += dt * 1.9f;
