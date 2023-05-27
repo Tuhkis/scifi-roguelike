@@ -28,7 +28,7 @@ void tickBullet(Bullet* b, float dt, Tilemap tiles) {
 
 	u8 c = 0;
 	Rect ti = { b->x, b->y, 16, 16 };
-	for ( u16 t = TILES_LEN; t > 0; --t ) {
+	for ( u16 t = 0; t < TILES_LEN; ++t ) {
 		if ( collideRect(ti, tiles.tiles[t].r) ) {
 			c = 1;
 		}
