@@ -46,7 +46,7 @@ void tickBullet(Bullet* b, float dt, Tilemap tiles) {
 void drawBullet(Bullet* b, Camera cam) {
 	if (b->vx != 0 || b->vy != 0)
 		drawTexture(
-			b->x - CAMX(cam), b->y - CAMY(cam),
+			b->x - cam.x, b->y - cam.y,
 			16, 16, 3, 16, 16, 0, 0, 0
 		);
 }
